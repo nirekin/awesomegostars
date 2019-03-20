@@ -1,6 +1,9 @@
 # Binaries for programs and plugins
 *.exe
 *.exe~
+*-darwin-*
+*-linux-*
+*-windows-*
 
 # Go dep
 vendor/
