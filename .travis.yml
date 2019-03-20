@@ -1,0 +1,31 @@
+language: go
+go: '1.10'
+
+env:
+- DEP_VERSION="0.4.1"
+
+before_install:
+- curl -L -s https://github.com/golang/dep/releases/download/v${DEP_VERSION}/dep-linux-amd64
+  -o $GOPATH/bin/dep
+- chmod +x $GOPATH/bin/dep
+
+install:
+- dep ensure -v
+
+script:
+  - bash xcross.sh
+  - for f in  awesomegostars-windows-*; do mv -v -- "$f" "$f.exe"; done;
+  - echo "Generated files"
+  - ls -al awesomegostars-*
+
+deploy:
+  provider: releases
+  skip_cleanup: true	
+  api_key:
+    secure: bjvwX9IaCCAun8DZSHFlNmRGbe2rPBsiEGj+gBJILJxjNB3jpJupOCeMYp8F+EMjv0RBknCr91dRpfM0HDTrIF+TNSXqznmbwzAMJ/fLkE32T6NNCy3ph2ZqEyFP+tMCjKw32Y71KxsET9eECaGiloc6hloK1K6aC6iD68HzCjfqVb2gc4fgxZ5hGO8DgaqDDGg3y40jkragm9PJhhW6kjxiJKsD4UCCzjKidAZ/Rb3XqIkwBEvvdZNvuJxSBur11SgXb/TijcuiMMhG0QyMJpzQrI2vsd7T3wi8qxMA48glUxfdVgfK4xB9kyo66u2ASBkS/jK9kqh5/KY/Y+CWe+ZRBgKaybkUYCVFyoNw/YKND72G7rLThk8N9A712zE62Auk+LKsmRIwiUy/k38N1AWbYzORf/go51ReuJrhrOtMRwqYfIBUeMjUBk1/wpVo1LbNP32wQ4XQannaoWV/K+TpJ59Lz0bJn/9DTx9TC5s2w2FvqfoTIUt42yB6GfUKmZ05ARviP7UMCEig0QPjsQ9E32qsuV52QD8zl0Lkz0PiXkdBi0/pMc+EQyuvYXYUlOD1COAZ7YPEtqyJ5wl1GmmenRNEhVtUKRV1gKtOH8xLArUgXszeFFejUlxsWficQdwgLgwffhUPZqca/KupDyFiKGAFdm5PQ9NqP+0DpG4=
+  file_glob: true
+  file:
+  - awesomegostars-*
+  on:
+    repo: nirekin/awesomegostars
+    tags: true

@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"testing"
@@ -13,7 +13,7 @@ func TestName(t *testing.T) {
 	assert.Equal(t, "asciigraph", na)
 
 	s = "* [dummy](https://github.com/user/repo) - Description containing https://github.com/user/repo"
-	na = getRepo(s)
-	assert.Equal(t, "dymmu", na)
+	na = getName(s)
+	assert.Equal(t, "dummy", na)
 
 }
