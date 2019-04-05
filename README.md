@@ -1,6 +1,7 @@
 ---
 # Awesomegostars
 ---
+[![Go Report Card](https://goreportcard.com/badge/github.com/nirekin/awesomegostars)](https://goreportcard.com/report/github.com/nirekin/awesomegostars)
 
 Awesomegostars is a small tool to get details on the [**Awesome Go**](https://github.com/avelino/awesome-go) list content. For each listed project the detail returned will be :
 
