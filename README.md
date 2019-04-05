@@ -78,7 +78,9 @@ If the desired category exists the you will get the detail of its content based 
 > Those three invocations will produce the same result
 
 > ```$ awesomegostars star -c data-structures```
+>
 > ```$ awesomegostars star -c "data structures"```
+>
 > ```$ awesomegostars star -c DATA-STRUCTURES```
 
 ### Filtering by text match `-f`
