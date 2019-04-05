@@ -2,14 +2,37 @@
 # Awesomegostars
 ---
 
-Awesomegostars is a small tool to get details on the Awesome Go list content.
+Awesomegostars is a small tool to get details on the [**Awesome Go**](https://github.com/avelino/awesome-go) list content. For each listed project the detail returned will be :
 
-It allows to filter the list content by category and then sort the category content by:
+- The name of the project 
+- Its number of :
+  - stars
+  - forks
+  - watchers
+  - issues
+- Its last update date
+
+
+Awesomegostars allows to filter the list content by category name and then sort the category content.
+
+#Usage:
+
+```$ awesomegostars <sort-key> [flags]``` 
+
+
+## Sorting content
+
+
+Awesomegostars allows to sort a category content by the following `<sort-key>` :
 
 - **star**: descending sort on the stargazers count
 - **fork**: descending sort on the forks count
 - **watch**: descending sort on the watchers count
 - **issues**: descending sort on the open issues count
+
+
+
+
  
 
 ## Filtering the categories
@@ -20,7 +43,7 @@ You can filter the desired categories by:
 - A text match in the category name
 
 
-### Filtering by matching name
+### Filtering by matching name `-c`
 
 Example: 
 
@@ -50,17 +73,15 @@ If the desired category exists the you will get the detail of its content based 
 ...
 ```
 
-> Note: The matching  name is not case sensitive and the `-` are not required
-> 
+> Note: The matching name is not case sensitive and the `-` are not required
+
 > Those three invocations will produce the same result
->
+
 > ```$ awesomegostars star -c data-structures```
->
 > ```$ awesomegostars star -c "data structures"```
->
 > ```$ awesomegostars star -c DATA-STRUCTURES```
 
-### Filtering by text match
+### Filtering by text match `-f`
 
 Example: 
 
@@ -81,7 +102,7 @@ If any category name contains *data* then you will have to select the desired ca
 > Note: The filter condition does not support regular expression nor words combination
 
 
-## Git API limitation
+## Git API limitation `-t`
 
 Because the Git API has a rate limit for unauthenticated requests (up to 60 requests per hour) the following error message can show up into the detail report once you reach this limit.
 
