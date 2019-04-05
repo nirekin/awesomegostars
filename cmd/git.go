@@ -23,7 +23,6 @@ type (
 )
 
 func readMD(url string) ([]string, error) {
-
 	r := make([]string, 0)
 
 	resp, err := http.Get(url)
