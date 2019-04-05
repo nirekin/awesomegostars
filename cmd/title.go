@@ -5,5 +5,5 @@ import (
 )
 
 func getTitle(s string) string {
-	return strings.ToLower(strings.Replace(strings.TrimSpace(strings.Replace(s, title_marker, "", -1)), " ", "-", -1))
+	return strings.ToLower(strings.Replace(strings.TrimSpace(strings.Replace(s, titleMarker, "", -1)), " ", "-", -1))
 }

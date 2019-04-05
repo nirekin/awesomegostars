@@ -11,13 +11,13 @@ import (
 )
 
 type (
-	Title struct {
+	title struct {
 		name      string
 		maxLength int
-		content   []StraredLine
+		content   []straredLine
 	}
 
-	StraredLine struct {
+	straredLine struct {
 		Origin string
 		Repo   string
 		Name   string
@@ -100,6 +100,7 @@ Give the detail of the category "data-structures"
 	fla *flags
 )
 
+// Execute runs the cobra command
 func Execute() {
 	fla = &flags{}
 
@@ -114,20 +115,20 @@ func Execute() {
 }
 
 func run() {
-	md, err := readMD(master_url)
+	md, err := readMD(masterURL)
 	if err != nil {
 		panic(err)
 	}
 
-	stared := make(map[string]*Title, 0)
-	var title string
+	stared := make(map[string]*title, 0)
+	var titleStr string
 	var inContent bool
 	for _, mdl := range md {
 		//Title
-		if strings.HasPrefix(mdl, title_marker) {
-			title = getTitle(mdl)
+		if strings.HasPrefix(mdl, titleMarker) {
+			titleStr = getTitle(mdl)
 
-			if title == "contents" {
+			if titleStr == "contents" {
 				inContent = true
 			}
 
@@ -136,31 +137,31 @@ func run() {
 			}
 
 			// Apply the filter on titles if required
-			if fla.filter != "" && !strings.Contains(title, strings.ToLower(fla.filter)) {
+			if fla.filter != "" && !strings.Contains(titleStr, strings.ToLower(fla.filter)) {
 				continue
 			}
 
-			stared[title] = &Title{
-				name:      title,
+			stared[titleStr] = &title{
+				name:      titleStr,
 				maxLength: 0,
-				content:   make([]StraredLine, 0),
+				content:   make([]straredLine, 0),
 			}
 		}
 
 		//Lines
-		if inContent && strings.Index(mdl, stared_line_marker) > -1 {
+		if inContent && strings.Index(mdl, staredLineMarker) > -1 {
 
-			if val, ok := stared[title]; ok {
+			if val, ok := stared[titleStr]; ok {
 				n := getName(mdl)
-				stared[title].content = append(val.content, StraredLine{
+				stared[titleStr].content = append(val.content, straredLine{
 					Origin: mdl,
 					Repo:   getRepo(mdl),
 					Name:   n,
 				})
 				// We keep the max length of the title for formatting purpose... later
 				tn := len(n)
-				if tn > stared[title].maxLength {
-					stared[title].maxLength = tn
+				if tn > stared[titleStr].maxLength {
+					stared[titleStr].maxLength = tn
 				}
 			}
 		}

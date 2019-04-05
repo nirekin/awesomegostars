@@ -13,7 +13,6 @@ func TestBadSortingKey(t *testing.T) {
 }
 
 func TestSortOnStars(t *testing.T) {
-	ts := make([]Response, 0)
 	r1 := build("aaa", 9, 0, 0, 0)
 	r2 := build("aac", 9, 0, 0, 0)
 	r3 := build("bbb", 1, 0, 0, 0)
@@ -25,7 +24,7 @@ func TestSortOnStars(t *testing.T) {
 	r9 := build("iii", 3, 0, 0, 0)
 	r10 := build("aab", 9, 0, 0, 0)
 	r11 := build("jjj", 6, 0, 0, 0)
-	ts = builToSort(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11)
+	ts := builToSort(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11)
 
 	r, err := sortResponses(keyStart, ts)
 	assert.Nil(t, err)
@@ -34,7 +33,6 @@ func TestSortOnStars(t *testing.T) {
 }
 
 func TestSortOnWatch(t *testing.T) {
-	ts := make([]Response, 0)
 	r1 := build("aaa", 0, 9, 0, 0)
 	r2 := build("aac", 0, 9, 0, 0)
 	r3 := build("bbb", 0, 1, 0, 0)
@@ -46,7 +44,7 @@ func TestSortOnWatch(t *testing.T) {
 	r9 := build("iii", 0, 3, 0, 0)
 	r10 := build("aab", 0, 9, 0, 0)
 	r11 := build("jjj", 0, 6, 0, 0)
-	ts = builToSort(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11)
+	ts := builToSort(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11)
 
 	r, err := sortResponses(keyWatch, ts)
 	assert.Nil(t, err)
@@ -55,7 +53,6 @@ func TestSortOnWatch(t *testing.T) {
 }
 
 func TestSortOnFork(t *testing.T) {
-	ts := make([]Response, 0)
 	r1 := build("aaa", 0, 0, 9, 0)
 	r2 := build("aac", 0, 0, 9, 0)
 	r3 := build("bbb", 0, 0, 1, 0)
@@ -67,7 +64,7 @@ func TestSortOnFork(t *testing.T) {
 	r9 := build("iii", 0, 0, 3, 0)
 	r10 := build("aab", 0, 0, 9, 0)
 	r11 := build("jjj", 0, 0, 6, 0)
-	ts = builToSort(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11)
+	ts := builToSort(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11)
 
 	r, err := sortResponses(keyFork, ts)
 	assert.Nil(t, err)
@@ -76,7 +73,6 @@ func TestSortOnFork(t *testing.T) {
 }
 
 func TestSortOnIssues(t *testing.T) {
-	ts := make([]Response, 0)
 	r1 := build("aaa", 0, 0, 0, 9)
 	r2 := build("aac", 0, 0, 0, 9)
 	r3 := build("bbb", 0, 0, 0, 1)
@@ -88,7 +84,7 @@ func TestSortOnIssues(t *testing.T) {
 	r9 := build("iii", 0, 0, 0, 3)
 	r10 := build("aab", 0, 0, 0, 9)
 	r11 := build("jjj", 0, 0, 0, 6)
-	ts = builToSort(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11)
+	ts := builToSort(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11)
 
 	r, err := sortResponses(keyIssues, ts)
 	assert.Nil(t, err)

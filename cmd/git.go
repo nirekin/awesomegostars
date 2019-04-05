@@ -9,6 +9,7 @@ import (
 )
 
 type (
+	//Response represents the detail received for a repository in the list
 	Response struct {
 		name      string
 		error     error
@@ -42,10 +43,10 @@ func readMD(url string) ([]string, error) {
 	return r, nil
 }
 
-func callGit(ch chan Response, fla *flags, l StraredLine) {
+func callGit(ch chan Response, fla *flags, l straredLine) {
 	resp := &Response{}
 	resp.name = l.Name
-	url := api_url + l.Repo
+	url := apiURL + l.Repo
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		resp.error = err

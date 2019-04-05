@@ -25,7 +25,7 @@ func sortResponses(sortingKey string, toSort []Response) ([]Response, error) {
 
 		// Sorting base on the sorting key
 		var keys []int
-		for k, _ := range temp {
+		for k := range temp {
 			keys = append(keys, k)
 		}
 		sort.Sort(sort.Reverse(sort.IntSlice(keys)))
@@ -34,7 +34,7 @@ func sortResponses(sortingKey string, toSort []Response) ([]Response, error) {
 			byKey := temp[k]
 			// Sorting base on the project name
 			var names []string
-			for k, _ := range byKey {
+			for k := range byKey {
 				names = append(names, k)
 			}
 			sort.Strings(names)
