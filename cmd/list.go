@@ -48,8 +48,13 @@ var (
  - watch: descending sort on the watchers count
  - issues: descending sort on the open issues count	
 `,
-		Example: `Example1 is a tool to get details on the Awesome Go content. 
- Available sorting keys are:
+		Example: `> awesomegostars star -f data
+Give the choice to get the detail all categories containing "data"				
+
+> awesomegostars star -c data-structures
+Give the detail of the category "data-structures"				
+
+ Available <sort-key> are:
  - star: descending sort on the stargazers count
  - fork: descending sort on the forks count
  - watch: descending sort on the watchers count
@@ -57,11 +62,10 @@ var (
 `,
 
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Println("in command")
-			fmt.Printf(" Soring on: %s\n", args[0])
+			fmt.Printf(" Sorting on: %s\n", args[0])
 			fla.sorting = args[0]
 			if fla.token != "" {
-				fmt.Printf(" Personal access token: %s\n", fla.token)
+				fmt.Printf(" Git Personal access token: %s\n", fla.token)
 			}
 			if fla.filter != "" {
 				fmt.Printf(" Filtering categories with: %s\n", fla.filter)
@@ -80,7 +84,7 @@ var (
 			}
 
 			if fla.category != "" && fla.filter != "" {
-				fmt.Printf(" The filter \"%s\" will be ignore because the category \"%s\" as been provided", fla.filter, fla.category)
+				fmt.Printf(" The filter \"%s\" will be ignore because the category \"%s\" has been provided", fla.filter, fla.category)
 				fla.filter = ""
 			}
 
@@ -99,7 +103,7 @@ var (
 func Execute() {
 	fla = &flags{}
 
-	rootCmd.Flags().StringVarP(&fla.token, "token", "t", "", "The Git personal token.")
+	rootCmd.Flags().StringVarP(&fla.token, "token", "t", "", "The Git personal access token.")
 	rootCmd.Flags().StringVarP(&fla.filter, "filter", "f", "", "A filter on the listed content.")
 	rootCmd.Flags().StringVarP(&fla.category, "category", "c", "", "The name of the desired category of content.")
 
@@ -131,7 +135,7 @@ func run() {
 				continue
 			}
 
-			// Apply thr filter on titles if required
+			// Apply the filter on titles if required
 			if fla.filter != "" && !strings.Contains(title, strings.ToLower(fla.filter)) {
 				continue
 			}
@@ -221,7 +225,7 @@ func run() {
 		}
 
 		spad := strconv.Itoa(val.maxLength + 3)
-		header := "|  Star  |  Fork  |  Watch  |  Issues  |  Udapte"
+		header := "|  Star  |  Fork  |  Watch  |  Issues  |  Last update"
 		s := fmt.Sprintf(" %-"+spad+"s"+header, "NAME")
 		fmt.Printf("%s\n", s)
 		var br string
