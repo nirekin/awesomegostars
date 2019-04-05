@@ -6,4 +6,9 @@ const (
 	anchorMarker     string = "](#"
 	titleMarker      string = "#"
 	staredLineMarker string = "](https://github.com/"
+
+	keyStar   string = "star"
+	keyFork   string = "fork"
+	keyWatch  string = "watch"
+	keyIssues string = "issues"
 )

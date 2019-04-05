@@ -26,7 +26,7 @@ func TestSortOnStars(t *testing.T) {
 	r11 := build("jjj", 6, 0, 0, 0)
 	ts := builToSort(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11)
 
-	r, err := sortResponses(keyStart, ts)
+	r, err := sortResponses(keyStar, ts)
 	assert.Nil(t, err)
 	assert.Equal(t, len(r), len(ts))
 	check(t, r, r1, r10, r2, r7, r4, r11, r5, r8, r9, r6, r3)

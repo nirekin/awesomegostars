@@ -32,11 +32,6 @@ type (
 )
 
 var (
-	keyStart  string = "star"
-	keyFork   string = "fork"
-	keyWatch  string = "watch"
-	keyIssues string = "issues"
-
 	rootCmd = &cobra.Command{
 		Use:   "awesomegostars <sort-key>",
 		Short: "Awesomegostars is a tool to get details on the Awesome Go content",
@@ -76,7 +71,7 @@ Give the detail of the category "data-structures"
 			run()
 		},
 		Args:      cobra.ExactArgs(1),
-		ValidArgs: []string{keyStart, keyFork, keyWatch, keyIssues},
+		ValidArgs: []string{keyStar, keyFork, keyWatch, keyIssues},
 		PreRun: func(cmd *cobra.Command, args []string) {
 			if err := cobra.OnlyValidArgs(cmd, args); err != nil {
 				fmt.Println(err)

@@ -10,7 +10,7 @@ func sortResponses(sortingKey string, toSort []Response) ([]Response, error) {
 	temp := make(map[int]map[string]Response)
 
 	switch sortingKey {
-	case keyStart, keyFork, keyWatch, keyIssues:
+	case keyStar, keyFork, keyWatch, keyIssues:
 		for _, v := range toSort {
 			i := v.sortingValue(sortingKey)
 			if val, ok := temp[i]; ok {

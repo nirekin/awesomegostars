@@ -28,7 +28,7 @@ func readMD(url string) ([]string, error) {
 
 	resp, err := http.Get(url)
 	if err != nil {
-		panic(err)
+		return r, err
 	}
 
 	defer resp.Body.Close()
@@ -93,7 +93,7 @@ End:
 
 func (r Response) sortingValue(sortingKey string) int {
 	switch sortingKey {
-	case keyStart:
+	case keyStar:
 		return r.Star
 	case keyFork:
 		return r.Fork
